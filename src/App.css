@@ -1,0 +1,58 @@
+
+
+.wrapper{
+    background-color: #ffffff;
+    width: 600px;
+    height: 435px;
+    overflow: hidden;
+    /**    outline: 1px solid #ffffff;**/
+}
+
+.row{
+  display: flex;
+  flex-wrap: nowrap;
+ /* border: 1px solid blue;*/
+}
+
+
+.row__left, .row__right{
+  display: flex;
+  border: 1px solid black;
+  flex: 1 1;
+  flex-direction: column;
+}
+.row__right{
+  border-left: none;
+  overflow: scroll;
+}
+
+.row__left-tabcontent{
+    height: 345px;
+}
+
+
+
+
+input{
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border: none;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: inherit;
+  /*border-radius: none;*/
+}
+
+
+li {
+  list-style-type: none; /* Убираем маркеры */
+}
+
+ul {
+  margin: 0; /* Отступ слева в браузере IE и Opera */
+  padding: 0; /* Отступ слева в браузере Firefox, Safari, Chrome */
+  line-height: 1.5;
+}
+
