@@ -1,11 +1,15 @@
 import React from "react";
+import {useSelector} from "react-redux";
 
 
-function ContentForecast () {
+function ContentForecast (props) {
+    const mainCityName = useSelector(state => state.request.mainCityName);
+    const weatherForecast = useSelector(state => state.request.weatherForecast);
+
     return (
         <div>
             <div id="forecast" className="tabcontent">
-                <div className="tabcontent-forecast-city">Dnipro</div>
+                <div className="tabcontent-forecast-city">{mainCityName}</div>
 
                 <div className="tabcontent-forecast-info-box" id="forecastWeather">
                     <div className="tabcontent-forecast-info-box-day-time">

@@ -1,22 +1,28 @@
 import React from "react";
 import cloud from "../../assets/icons/icons8-cloud-96-1.svg"
-import {connect, useSelector} from "react-redux";
+import {connect} from "react-redux";
 import {compose} from "redux";
-import {addLocation} from "../../redux/headerReducer";
+import {addLocation, deleteLocation, getWeather} from "../../redux/headerReducer";
 
-/*import {compose} from "redux";*/
 
 function ContentNow(props) {
-    /*const mainCityName = useSelector(state => state.request.mainCityName);*/
+
+
+    const isNew = (city) => {
+        return  !(props.addedLocations.includes(city));
+    }
 
 const addLocationToList = () => {
-    props.addLocation(props.mainCityName)
+    isNew(props.mainCityName)
+        ? props.addLocation(props.mainCityName)
+        : props.deleteLocation(props.mainCityName)
     }
 
     return (
         <div className="row__left-tabcontent">
             <div id="now" className="tabcontent">
-                <div className="tabcontent-now-temp"><span>14</span>&#176;</div>
+
+                <div className="tabcontent-now-temp"><span>{Math.round(+(props.weatherTemp) - 273)}</span>&#176;</div>
                 <div className="tabcontent-now-ico" id="firstIco">
                     <img src={cloud}
                          alt="weather"/></div>
@@ -25,7 +31,7 @@ const addLocationToList = () => {
                     <button className="tabcontent-now-fvorite-btn"
                     onClick={addLocationToList}>
                         {
-                            props.mainCityName == "Dnipro1"
+                            isNew(props.mainCityName)
                                 ?
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      className="bi bi-heart" viewBox="0 0 16 16">
@@ -54,10 +60,12 @@ export default ContentNow
 
 const mapStateToProps = (state) => ({
     mainCityName: state.request.mainCityName,
+    addedLocations: state.request.addedLocations,
+    weatherTemp: state.request.weather.main?.temp,
 });
 
 export default compose(
-    connect(mapStateToProps, {addLocation})
+    connect(mapStateToProps, {addLocation, deleteLocation, getWeather})
 )(ContentNow)
 
 

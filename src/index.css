@@ -197,14 +197,15 @@ a.active {
 
 
 .row__right-close {
-  display: flex;
-  flex-wrap: nowrap;
+
   margin-left: 20px;
   /* background: url("/icons/cross.svg") no-repeat;*/
   width: 18px;
   height: 18px;
   border: none;
   cursor: pointer;
+  padding: 0;
+  background-color: #ffffff;
 }
 
 
@@ -244,4 +245,14 @@ a.active {
 #forecast{
   overflow: scroll;
   overflow-x: hidden;
+}
+
+.preloader {
+  text-decoration: none;
+  color: black;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 40px;
 }
